@@ -1,6 +1,7 @@
 # Portfólio Profissional - Designer Gráfico
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+![Deploy Status](https://github.com/devjogerio/portifolio-designer-grafico/actions/workflows/deploy.yml/badge.svg)
 
 Este projeto é um portfólio profissional desenvolvido para designers gráficos, focado em apresentar trabalhos de branding, editorial e design digital de forma elegante e responsiva.
 
@@ -13,7 +14,7 @@ Este projeto é um portfólio profissional desenvolvido para designers gráficos
 - **Jest:** Framework de testes unitários para garantir a estabilidade do código.
 - **GitHub Actions:** Automação de CI/CD para deploy contínuo.
 
-## � Funcionalidades
+## 📋 Funcionalidades
 
 - **Design Responsivo:** Layout adaptável para Mobile, Tablet e Desktop.
 - **Sistema de Temas:** Suporte completo a Dark Mode e Light Mode com persistência de preferência do usuário (localStorage) e detecção automática do sistema.
@@ -48,7 +49,7 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
     ```
     O projeto estará acessível em `http://localhost:3000` (ou outra porta indicada).
 
-## � Build e Deploy
+## 📦 Build e Deploy
 
 O projeto está configurado para deploy automático no **GitHub Pages** utilizando GitHub Actions.
 
@@ -95,6 +96,6 @@ npm test
 └── package.json         # Dependências e scripts
 ```
 
-## � Licença
+## 📄 Licença
 
 Este projeto está sob a licença MIT. Sinta-se à vontade para usar e modificar.
