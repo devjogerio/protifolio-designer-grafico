@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- Definição de idioma para português brasileiro -->
+<html lang="pt-BR">
+
+<head>
+    <!-- Metadados de codificação de caracteres -->
+    <meta charset="UTF-8">
+    <!-- Viewport para responsividade em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título da página (SEO) -->
+    <title>Portfólio | Designer Gráfico Especialista em Branding e Editorial</title>
+    <!-- Descrição para motores de busca -->
+    <meta name="description" content="Portfólio profissional de design gráfico. Especializado em identidades visuais, design editorial e branding estratégico. Confira meus projetos.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usuario.github.io/portfolio-designer-grafico/">
+    <meta property="og:title" content="Portfólio Profissional - Designer Gráfico">
+    <meta property="og:description" content="Confira meus últimos trabalhos em branding, editorial e design digital.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/2563eb/ffffff?text=Portfolio+Design">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://usuario.github.io/portfolio-designer-grafico/">
+    <meta property="twitter:title" content="Portfólio Profissional - Designer Gráfico">
+    <meta property="twitter:description" content="Confira meus últimos trabalhos em branding, editorial e design digital.">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630/2563eb/ffffff?text=Portfolio+Design">
+
+    <!-- Preconnect para Google Fonts (Performance) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importação da fonte Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Folhas de estilo -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Schema Markup (JSON-LD) para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nome do Designer",
+      "url": "https://usuario.github.io/portfolio-designer-grafico/",
+      "jobTitle": "Designer Gráfico",
+      "sameAs": [
+        "https://linkedin.com/in/usuario",
+        "https://behance.net/usuario",
+        "https://instagram.com/usuario"
+      ]
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- Cabeçalho de Navegação -->
+    <header>
+        <div class="container">
+            <!-- Wrapper para Marca e Toggle de Tema -->
+            <div class="brand-wrapper">
+                <!-- Logo ou Nome do Profissional -->
+                <a href="#" class="logo">Roger Designer</a>
+
+                <!-- Botão Toggle Theme (Posicionado ao lado do título) -->
+                <button id="theme-toggle" class="btn-theme" aria-label="Alternar Tema">
+                    🌗
+                </button>
+            </div>
+
+            <!-- Botão Menu Mobile (Fica à direita no mobile) -->
+            <div class="menu-toggle" aria-label="Abrir menu" role="button" tabindex="0">
+                ☰
+            </div>
+
+            <!-- Links de Navegação -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero (Destaque Principal) -->
+        <section id="home" class="hero">
+            <div class="container">
+                <!-- Headline Principal -->
+                <h1>Design que conecta marcas e pessoas</h1>
+                <!-- Subtítulo descritivo -->
+                <p>Designer gráfico especializado em branding e design editorial. Transformo conceitos em identidades visuais memoráveis para empresas inovadoras.</p>
+                <!-- Call to Action -->
+                <a href="#projects" class="btn">Ver Projetos</a>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Mim -->
+        <section id="about">
+            <div class="container">
+                <div class="about-content">
+                    <!-- Imagem do Designer -->
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Foto de perfil do Designer Gráfico" width="600" height="600" style="border-radius: var(--border-radius);">
+                    </div>
+                    <!-- Texto Biográfico -->
+                    <div class="about-text">
+                        <h2>Sobre Mim</h2>
+                        <p>Com mais de 5 anos de experiência no mercado criativo, sou apaixonado por resolver problemas visuais complexos. Formado em Design Gráfico pela Universidade de Artes, meu foco é criar sistemas de identidade que sejam funcionais e esteticamente impactantes.</p>
+                        <p>Minha abordagem combina pesquisa estratégica com exploração visual livre, garantindo resultados únicos para cada cliente.</p>
+
+                        <!-- Lista de Habilidades -->
+                        <h3>Habilidades & Ferramentas</h3>
+                        <ul>
+                            <li>Adobe Photoshop</li>
+                            <li>Adobe Illustrator</li>
+                            <li>InDesign</li>
+                            <li>Figma</li>
+                            <li>Branding</li>
+                            <li>Design Editorial</li>
+                            <li>Direção de Arte</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Galeria de Projetos -->
+        <section id="projects">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Meus Trabalhos</h2>
+
+                <!-- Filtros da Galeria -->
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="branding">Branding</button>
+                    <button class="filter-btn" data-filter="editorial">Editorial</button>
+                    <button class="filter-btn" data-filter="ux-ui">UX/UI</button>
+                    <button class="filter-btn" data-filter="social-media">Social Media</button>
+                    <button class="filter-btn" data-filter="ilustracao">Ilustração</button>
+                </div>
+
+                <!-- Grid onde os projetos serão injetados via JS -->
+                <div class="projects-grid" id="projects-grid">
+                    <!-- O conteúdo será carregado dinamicamente pelo script.js -->
+                    <noscript>
+                        <p>Por favor, habilite o JavaScript para visualizar a galeria de projetos.</p>
+                    </noscript>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contact" style="background-color: var(--background-alt);">
+            <div class="container">
+                <h2 style="text-align: center;">Vamos trabalhar juntos?</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-light);">Preencha o formulário abaixo ou envie um email direto.</p>
+
+                <div class="contact-wrapper">
+                    <!-- Formulário -->
+                    <form id="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="whatsapp">WhatsApp</label>
+                            <div style="position: relative;">
+                                <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(00) 00000-0000" maxlength="15" style="padding-left: 2.5rem;">
+                                <span style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); font-size: 1.2rem;">📱</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project-type">Tipo de Projeto</label>
+                            <select id="project-type" name="project-type">
+                                <option value="branding">Identidade Visual / Branding</option>
+                                <option value="editorial">Design Editorial</option>
+                                <option value="web">Web Design / App</option>
+                                <option value="other">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Conte um pouco sobre seu projeto..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn" style="width: 100%;">Enviar Mensagem</button>
+
+                        <!-- Mensagens de Feedback -->
+                        <div id="form-success" class="form-feedback success" role="alert" aria-live="polite">
+                            Mensagem enviada com sucesso! Entrarei em contato em breve.
+                        </div>
+                        <div id="form-error" class="form-feedback error" role="alert" aria-live="polite">
+                            Ocorreu um erro ao enviar. Por favor, tente novamente ou envie um email direto.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <!-- Links Sociais -->
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
+                <a href="#" aria-label="Behance" title="Behance">Be</a>
+                <a href="#" aria-label="Instagram" title="Instagram">Ig</a>
+                <a href="#" aria-label="Dribbble" title="Dribbble">Dr</a>
+            </div>
+            <!-- Informações Legais -->
+            <p>&copy; <span id="current-year"></span> Roger Designer. Todos os direitos reservados.</p>
+            <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 0.5rem;">Desenvolvido com HTML, CSS e JS puro.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Arquivo JavaScript principal carregado como módulo para suporte a import/export (ES6) -->
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+
+</html>

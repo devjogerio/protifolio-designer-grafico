@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Projeto | Portfólio Designer Gráfico</title>
+
+    <!-- Mesmos estilos da home -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Header simplificado para navegação interna -->
+    <header>
+        <div class="container">
+            <!-- Wrapper para Marca e Toggle de Tema (Consistência) -->
+            <div class="brand-wrapper">
+                <a href="index.html" class="logo">Roger Designer</a>
+                <button id="theme-toggle" class="btn-theme" aria-label="Alternar Tema">
+                    🌗
+                </button>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Voltar para Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Container onde os detalhes do projeto serão injetados -->
+        <article id="project-content" class="container" style="padding-top: 4rem; padding-bottom: 4rem;">
+            <!-- Placeholder enquanto carrega -->
+            <div style="text-align: center;">Carregando projeto...</div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Roger Designer.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Arquivo JavaScript principal carregado como módulo para suporte a import/export (ES6) -->
+    <script type="module" src="assets/js/project.js"></script>
+</body>
+
+</html>

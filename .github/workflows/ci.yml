@@ -1,0 +1,39 @@
+name: CI - Quality Checks
+
+# Aciona o workflow em push ou pull request na branch main
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    # Roda em máquina virtual Ubuntu
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    # 1. Faz checkout do código
+    - uses: actions/checkout@v3
+
+    # 2. Configura Node.js
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    # 3. Instala dependências
+    - name: Install Dependencies
+      run: npm ci
+
+    # 4. Roda os testes com cobertura
+    - name: Run Tests with Coverage
+      run: npm test
+      
+    # 5. Verifica se a cobertura atinge o limiar (já configurado no jest.config.js)
+    # O comando npm test falhará se a cobertura for menor que o configurado no jest.config.js

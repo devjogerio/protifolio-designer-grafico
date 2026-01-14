@@ -1,0 +1,54 @@
+# Nome do Workflow
+name: Deploy to GitHub Pages
+
+# Gatilhos de execução
+on:
+  # Executa quando há um push na branch main
+  push:
+    branches: ['main']
+  # Permite execução manual pela interface do GitHub
+  workflow_dispatch:
+
+# Permissões necessárias para o GITHUB_TOKEN
+permissions:
+  contents: write
+
+# Definição dos jobs
+jobs:
+  # Job de deploy
+  deploy:
+    # Sistema operacional da máquina virtual
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check-out do código
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Configuração do Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Instalação das dependências
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Execução dos testes (Opcional, mas recomendado para garantir qualidade)
+      # Nota: Se os testes falharem, o deploy não acontece.
+      # - name: Run tests
+      #   run: npm test
+
+      # 5. Build do projeto
+      - name: Build project
+        run: npm run build
+
+      # 6. Deploy para o GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # Diretório gerado pelo Vite
+          force_orphan: true # Cria uma branch limpa a cada deploy para evitar histórico gigante

@@ -1,0 +1,472 @@
+/**
+ * Arquivo Principal de Estilos (CSS).
+ * Contém a estilização de todos os componentes e seções do site.
+ * Estruturado para ser responsivo (Mobile-First).
+ */
+
+/* =========================================
+   Reset e Estilos Base
+   ========================================= */
+
+/* Seletor universal para reset de box-model */
+* {
+  /* Garante que padding e border não aumentem a largura total do elemento */
+  box-sizing: border-box;
+  /* Remove margens padrão */
+  margin: 0;
+  /* Remove preenchimentos padrão */
+  padding: 0;
+}
+
+/* Estilos para o corpo da página */
+body {
+  /* Define a família de fonte base definida nas variáveis */
+  font-family: var(--font-family-base);
+  /* Define a cor de fundo da página */
+  background-color: var(--background-color);
+  /* Define a cor do texto principal */
+  color: var(--text-color);
+  /* Altura da linha para melhor legibilidade */
+  line-height: 1.6;
+  /* Suavização de fonte no MacOS */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Estilos para imagens */
+img {
+  /* Garante que imagens não estourem o container */
+  max-width: 100%;
+  /* Mantém a proporção da imagem */
+  height: auto;
+  /* Remove espaço extra abaixo da imagem (inline-block) */
+  display: block;
+}
+
+/* Estilos para links */
+a {
+  /* Remove o sublinhado padrão */
+  text-decoration: none;
+  /* Herda a cor do elemento pai ou define cor primária */
+  color: inherit;
+  /* Adiciona transição suave para hover */
+  transition: color var(--transition-speed);
+}
+
+/* Remove marcadores de lista */
+ul {
+  list-style: none;
+}
+
+/* =========================================
+   Tipografia
+   ========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* Fonte específica para títulos */
+  font-family: var(--font-family-heading);
+  /* Cor dos títulos (pode ser mais escura que o texto normal) */
+  color: var(--text-color);
+  /* Espaçamento inferior para separar do texto */
+  margin-bottom: 1rem;
+  /* Peso da fonte */
+  font-weight: 700;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+h2 {
+  font-size: var(--font-size-h2);
+}
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+/* =========================================
+   Layout e Containers
+   ========================================= */
+
+/* Container centralizado que limita a largura do conteúdo */
+.container {
+  /* Largura máxima definida nas variáveis */
+  max-width: var(--container-max-width);
+  /* Centraliza horizontalmente */
+  margin: 0 auto;
+  /* Espaçamento interno lateral */
+  padding: 0 var(--container-padding);
+  /* Garante largura total */
+  width: 100%;
+}
+
+/* Seções da página */
+section {
+  /* Espaçamento vertical generoso entre seções */
+  padding: var(--section-spacing) 0;
+}
+
+/* =========================================
+   Header e Navegação
+   ========================================= */
+
+/* Cabeçalho fixo ou no topo */
+header {
+  /* Cor de fundo com leve transparência/cor sólida */
+  background-color: var(--background-color);
+  /* Borda inferior sutil */
+  border-bottom: 1px solid var(--border-color);
+  /* Fixa no topo (opcional, bom para UX) */
+  position: sticky;
+  top: 0;
+  /* Garante que fique acima de outros elementos */
+  z-index: 1000;
+  /* Espaçamento vertical */
+  padding: 1rem 0;
+}
+
+/* Flexbox para alinhar logo e navegação */
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Wrapper para Logo e Toggle (Novo) */
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Espaço entre o logo e o botão */
+}
+
+/* Logo do portfólio */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Botão de Tema no Header (Novo) */
+.btn-theme {
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: all var(--transition-speed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-theme:hover {
+  background-color: var(--background-alt);
+  border-color: var(--primary-color);
+}
+
+/* Navegação desktop */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary-color);
+}
+
+/* Menu mobile (hambúrguer) - Inicialmente oculto em desktop */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+
+.hero {
+  /* Alinhamento centralizado do texto */
+  text-align: center;
+  /* Espaçamento extra no topo e base */
+  padding: 6rem 0;
+  /* Fundo sutilmente diferente */
+  background-color: var(--background-alt);
+}
+
+.hero h1 {
+  /* Título de impacto */
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  /* Subtítulo descritivo */
+  font-size: 1.25rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+/* Botão de chamada para ação (CTA) */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: background-color var(--transition-speed);
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1d4ed8; /* Tom mais escuro do azul */
+}
+
+/* =========================================
+   Sobre Mim
+   ========================================= */
+
+.about-content {
+  display: grid;
+  /* Layout de grid para imagem e texto */
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-text ul {
+  /* Lista de habilidades */
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about-text li {
+  background-color: var(--background-alt);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+/* =========================================
+   Galeria de Projetos
+   ========================================= */
+
+/* Container dos filtros */
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+/* Botões de filtro */
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--text-light);
+  font-family: var(--font-family-base);
+  transition: all var(--transition-speed);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+/* Grid da galeria */
+.projects-grid {
+  display: grid;
+  /* Grid responsivo automático */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Card do projeto */
+.project-card {
+  background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-speed);
+  cursor: pointer;
+}
+
+.project-card:hover {
+  /* Efeito de levitação leve */
+  transform: translateY(-5px);
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: #eee; /* Fallback */
+}
+
+.project-info {
+  padding: 1.5rem;
+}
+
+.project-category {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* =========================================
+   Contato
+   ========================================= */
+
+.contact-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Feedback visual do formulário */
+.form-feedback {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  display: none; /* Oculto por padrão */
+}
+
+.form-feedback.success {
+  display: block;
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.form-feedback.error {
+  display: block;
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+
+footer {
+  background-color: var(--background-alt);
+  padding: 3rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-links a {
+  font-size: 1.5rem;
+  color: var(--text-light);
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+}
+
+/* =========================================
+   Media Queries (Responsividade)
+   ========================================= */
+
+@media (min-width: 768px) {
+  /* Layout de 2 colunas para Sobre em Tablet/Desktop */
+  .about-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ajustes para Mobile */
+
+  .nav-links {
+    /* Menu mobile escondido */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .nav-links.active {
+    /* Mostra menu quando ativo */
+    display: flex;
+  }
+
+  .menu-toggle {
+    /* Mostra ícone do hambúrguer */
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}

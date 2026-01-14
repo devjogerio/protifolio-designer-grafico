@@ -1,0 +1,21 @@
+{
+  "name": "portifolio-designer-grafico",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Este repositório contém o código-fonte de um portfólio profissional para designers gráficos, desenvolvido como uma aplicação estática (HTML5, CSS3 e JavaScript puro) pronta para hospedagem no GitHub Pages.",
+  "main": "assets/js/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "vite": "^7.3.1"
+  }
+}

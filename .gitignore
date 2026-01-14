@@ -1,0 +1,26 @@
+# Logs e Arquivos de Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Dependências
+node_modules/
+package-lock.json # Opcional: manter se quiser versionar as versões exatas, ignorar se preferir atualizar sempre. (Geralmente mantém-se)
+
+# Build de Produção
+dist/
+build/
+
+# Variáveis de Ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Cobertura de Testes
+coverage/
