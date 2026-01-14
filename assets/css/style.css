@@ -248,20 +248,19 @@ header .container {
   align-items: center;
 }
 
+
+/* Remove estilos antigos da lista que podem conflitar */
 .about-text ul {
-  /* Lista de habilidades */
-  margin-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  /* Resetando margens para usar as classes novas */
+  margin-top: 0;
+  display: block; /* Reset do flex antigo, agora controlado por .skills-list */
 }
 
 .about-text li {
-  background-color: var(--background-alt);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  color: var(--secondary-color);
+  /* Resetando estilos antigos */
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
 }
 
 /* =========================================

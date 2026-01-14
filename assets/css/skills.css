@@ -1,0 +1,78 @@
+
+/* =========================================
+   Estilos da Lista de Habilidades (Skills)
+   ========================================= */
+
+.skills-list {
+  /* Organização em flexbox para permitir wrap se necessário */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-item {
+  /* Layout do item: Flex para alinhar ícone e texto */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaçamento solicitado de 8px */
+  
+  /* Estilização visual */
+  background-color: var(--background-alt);
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px; /* Borda arredondada moderna */
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-color);
+  border: 1px solid transparent; /* Para evitar layout shift no hover se tiver borda */
+  
+  /* Configuração da Animação Inicial */
+  opacity: 0; /* Invisível inicialmente */
+  transform: translateY(20px); /* Deslocado 20px para baixo */
+  
+  /* Otimização de performance */
+  will-change: opacity, transform;
+  
+  /* Transição suave para hover */
+  transition: 
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Classe aplicada via JS para ativar a animação de entrada */
+.skill-item.visible {
+  /* Animação definida via CSS Animation ou Transition */
+  /* Optando por Animation para maior controle de keyframes se necessário, 
+     mas Transition é suficiente conforme spec 'transition/animations' */
+  animation: fadeSlideIn 300ms ease-out forwards;
+}
+
+/* Definição da animação keyframes */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo do ícone SVG */
+.skill-icon {
+  width: 24px; /* Tamanho solicitado */
+  height: 24px;
+  color: var(--primary-color); /* Ícone na cor primária para destaque */
+  flex-shrink: 0; /* Impede que o ícone encolha */
+}
+
+/* Efeito de Hover nos itens (Extra UX) */
+.skill-item:hover {
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px); /* Pequeno lift no hover */
+}

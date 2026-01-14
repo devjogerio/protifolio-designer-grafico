@@ -82,7 +82,64 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Caso contrário -> Esconde
                     card.style.display = 'none';
                 }
+                // =========================================
+    // Animação da Lista de Habilidades
+    // =========================================
+
+    // Seleciona todos os itens da lista de habilidades
+    const skillItems = document.querySelectorAll('.skill-item');
+
+    // Verifica se existem itens para animar
+    if (skillItems.length > 0) {
+        // Criação do IntersectionObserver para detectar quando os elementos entram na tela
+        const observerOptions = {
+            root: null, // Usa a viewport como referência
+            rootMargin: '0px', // Sem margem adicional
+            threshold: 0.1 // Dispara quando 10% do elemento estiver visível
+        };
+
+        const skillsObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                // Verifica se o elemento entrou na viewport
+                if (entry.isIntersecting) {
+                    // Seleciona o elemento que entrou
+                    const container = entry.target;
+                    
+                    // Encontra todos os itens dentro deste container (se observarmos a lista)
+                    // OU se observarmos cada item individualmente.
+                    // Estratégia: Observar o pai (ul) para disparar a cascata
+                }
             });
+        }, observerOptions);
+        
+        // Estratégia Refinada: Observar a lista inteira para disparar a sequência
+        const skillsList = document.querySelector('.skills-list');
+        
+        if (skillsList) {
+            const listObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Inicia a sequência de animação para cada item
+                        skillItems.forEach((item, index) => {
+                            // Aplica um atraso escalonado (cascata)
+                            // 100ms * índice do item
+                            setTimeout(() => {
+                                // Adiciona a classe que ativa o CSS animation
+                                item.classList.add('visible');
+                            }, index * 100);
+                        });
+                        
+                        // Para de observar após ativar a animação (executa apenas uma vez)
+                        listObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Começa a observar a lista
+            listObserver.observe(skillsList);
+        }
+    }
+});
         });
     });
 });
