@@ -32,7 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Se o projeto não for encontrado (ID inválido), mostra mensagem de erro
     if (!project) {
-        container.innerHTML = '<h2>Projeto não encontrado.</h2><a href="index.html" class="btn">Voltar</a>';
+        container.innerHTML = `
+            <div class="text-center py-20">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Projeto não encontrado</h2>
+                <a href="index.html" class="text-blue-600 hover:underline">Voltar para Home</a>
+            </div>
+        `;
         return;
     }
 
@@ -42,39 +47,50 @@ document.addEventListener('DOMContentLoaded', () => {
     // Gera o HTML do conteúdo dinamicamente
     // Estrutura: Cabeçalho do projeto -> Detalhes (Grid) -> Galeria de Imagens
     container.innerHTML = `
-        <div style="margin-bottom: 3rem; text-align: center;">
-            <span style="color: var(--primary-color); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">${project.category}</span>
-            <h1 style="font-size: 3rem; margin-top: 0.5rem;">${project.title}</h1>
-            <p style="font-size: 1.2rem; color: var(--text-light); max-width: 800px; margin: 0 auto;">${project.shortDescription}</p>
+        <div class="mb-12 text-center">
+            <span class="text-blue-600 uppercase font-semibold tracking-wider text-sm">${project.category}</span>
+            <h1 class="text-4xl md:text-5xl font-heading font-bold text-slate-900 mt-2 mb-4">${project.title}</h1>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">${project.shortDescription}</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr; gap: 4rem; margin-bottom: 4rem;">
-            <img src="${project.thumbnail}" alt="${project.title} - Capa" style="width: 100%; border-radius: var(--border-radius); max-height: 500px; object-fit: cover;">
+        <div class="grid grid-cols-1 gap-12 mb-16">
+            <img src="${project.thumbnail}" alt="${project.title} - Capa" class="w-full h-auto rounded-2xl shadow-lg max-h-[600px] object-cover">
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div>
-                    <h3>O Desafio (Briefing)</h3>
-                    <p>${project.details.briefing}</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                    <h3 class="text-xl font-heading font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-blue-500 rounded-full"></span>
+                        O Desafio
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">${project.details.briefing}</p>
                 </div>
-                <div>
-                    <h3>A Solução</h3>
-                    <p>${project.details.solution}</p>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                    <h3 class="text-xl font-heading font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-indigo-500 rounded-full"></span>
+                        A Solução
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">${project.details.solution}</p>
                 </div>
-                <div>
-                    <h3>O Resultado</h3>
-                    <p>${project.details.result}</p>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                    <h3 class="text-xl font-heading font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-purple-500 rounded-full"></span>
+                        O Resultado
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">${project.details.result}</p>
                 </div>
             </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             ${project.details.images.map(img => `
-                <img src="${img}" alt="Detalhe do projeto" style="width: 100%; border-radius: var(--border-radius);">
+                <img src="${img}" alt="Detalhe do projeto" class="w-full rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
             `).join('')}
         </div>
         
-        <div style="margin-top: 4rem; text-align: center;">
-            <a href="index.html#projects" class="btn">Ver outros projetos</a>
+        <div class="mt-16 text-center">
+            <a href="index.html#projects" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 transform hover:-translate-y-1">
+                Ver outros projetos
+            </a>
         </div>
     `;
 });

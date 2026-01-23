@@ -39,27 +39,28 @@ export function initCommon() {
     // 1. Menu Mobile
     // =========================================
 
-    // Seleciona o botão de toggle do menu (hambúrguer)
-    const menuToggle = document.querySelector('.menu-toggle');
-    // Seleciona a lista de links de navegação
-    const navLinks = document.querySelector('.nav-links');
+    // Seleciona o botão de toggle do menu
+    const menuToggle = document.getElementById('menu-toggle');
+    // Seleciona o container do menu mobile
+    const mobileMenu = document.getElementById('mobile-menu');
 
     // Verifica se os elementos existem para evitar erros
-    if (menuToggle && navLinks) {
+    if (menuToggle && mobileMenu) {
         // Adiciona ouvinte de evento de clique no botão
         menuToggle.addEventListener('click', () => {
-            // Alterna a classe 'active' na lista de links para mostrar/esconder
-            navLinks.classList.toggle('active');
+            // Alterna a classe 'hidden' para mostrar/esconder
+            mobileMenu.classList.toggle('hidden');
 
             // Acessibilidade: atualiza o atributo aria-expanded
-            const isExpanded = navLinks.classList.contains('active');
+            const isExpanded = !mobileMenu.classList.contains('hidden');
             menuToggle.setAttribute('aria-expanded', isExpanded);
         });
 
         // Fecha o menu ao clicar em um link (melhor UX mobile)
-        navLinks.querySelectorAll('a').forEach(link => {
+        mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+                menuToggle.setAttribute('aria-expanded', 'false');
             });
         });
     }
@@ -90,11 +91,13 @@ export function initCommon() {
 
             e.target.value = value;
 
-            // Validação visual simples (muda cor da borda)
+            // Validação visual simples (muda cor da borda usando Tailwind)
             if (value.length === 15) {
-                e.target.style.borderColor = 'var(--success-color)';
+                e.target.classList.remove('border-slate-200', 'focus:border-blue-500');
+                e.target.classList.add('border-green-500', 'focus:border-green-500');
             } else {
-                e.target.style.borderColor = 'var(--border-color)';
+                e.target.classList.remove('border-green-500', 'focus:border-green-500');
+                e.target.classList.add('border-slate-200', 'focus:border-blue-500');
             }
         });
     }

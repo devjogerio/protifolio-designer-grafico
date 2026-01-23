@@ -1,55 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Projeto | Portfólio Designer Gráfico</title>
-
-    <!-- Mesmos estilos da home -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/variables.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
 
-    <!-- Header simplificado para navegação interna -->
-    <header>
-        <div class="container">
-            <!-- Wrapper para Marca e Toggle de Tema (Consistência) -->
-            <div class="brand-wrapper">
-                <a href="index.html" class="logo">Roger Designer</a>
-                <button id="theme-toggle" class="btn-theme" aria-label="Alternar Tema">
-                    🌗
-                </button>
+    <!-- Header Simplificado -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="text-2xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-80 transition-opacity">
+                    Roger Designer
+                </a>
+                
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 transition-colors text-slate-600" aria-label="Alternar Tema">
+                        <span class="dark:hidden">🌙</span>
+                        <span class="hidden dark:inline">☀️</span>
+                    </button>
+                    <a href="index.html" class="flex items-center gap-2 text-slate-600 hover:text-blue-600 font-medium transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        <span class="hidden sm:inline">Voltar para Home</span>
+                    </a>
+                </div>
             </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Voltar para Home</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <main>
-        <!-- Container onde os detalhes do projeto serão injetados -->
-        <article id="project-content" class="container" style="padding-top: 4rem; padding-bottom: 4rem;">
-            <!-- Placeholder enquanto carrega -->
-            <div style="text-align: center;">Carregando projeto...</div>
+    <main class="pt-32 pb-20">
+        <article id="project-content" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[50vh]">
+            <div class="flex justify-center items-center h-64 text-slate-500 animate-pulse">
+                Carregando projeto...
+            </div>
         </article>
     </main>
 
-    <footer>
-        <div class="container">
+    <footer class="bg-white border-t border-slate-100 py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-600">
             <p>&copy; <span id="current-year"></span> Roger Designer.</p>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <!-- Arquivo JavaScript principal carregado como módulo para suporte a import/export (ES6) -->
     <script type="module" src="assets/js/project.js"></script>
 </body>
 
