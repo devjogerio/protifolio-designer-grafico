@@ -117,7 +117,7 @@ export const projectsData = [
         // Categoria do projeto
         category: "social-media",
         // Imagem de thumbnail
-        thumbnail: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        thumbnail: "assets/img/07.png",
         // Descrição curta
         shortDescription: "Peças para redes sociais divulgando a nova coleção de óculos.",
         // Detalhes do projeto
@@ -143,7 +143,7 @@ export const projectsData = [
         // Categoria do projeto
         category: "social-media",
         // Imagem de thumbnail
-        thumbnail: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        thumbnail: "assets/img/03.jpg",
         // Descrição curta
         shortDescription: "Peças para redes sociais divulgando a nova coleção de óculos.",
         // Detalhes do projeto
@@ -169,7 +169,7 @@ export const projectsData = [
         // Categoria do projeto
         category: "social-media",
         // Imagem de thumbnail
-        thumbnail: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        thumbnail: "assets/img/03.jpg",
         // Descrição curta
         shortDescription: "Peças para redes sociais divulgando a nova coleção de óculos.",
         // Detalhes do projeto
@@ -195,7 +195,7 @@ export const projectsData = [
         // Categoria do projeto
         category: "social-media",
         // Imagem de thumbnail
-        thumbnail: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        thumbnail: "assets/img/03.jpg",
         // Descrição curta
         shortDescription: "Peças para redes sociais divulgando a nova coleção de óculos.",
         // Detalhes do projeto
