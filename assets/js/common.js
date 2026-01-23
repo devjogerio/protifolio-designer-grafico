@@ -93,11 +93,11 @@ export function initCommon() {
 
             // Validação visual simples (muda cor da borda usando Tailwind)
             if (value.length === 15) {
-                e.target.classList.remove('border-slate-200', 'focus:border-blue-500');
+                e.target.classList.remove('border-border', 'focus:border-primary');
                 e.target.classList.add('border-green-500', 'focus:border-green-500');
             } else {
                 e.target.classList.remove('border-green-500', 'focus:border-green-500');
-                e.target.classList.add('border-slate-200', 'focus:border-blue-500');
+                e.target.classList.add('border-border', 'focus:border-primary');
             }
         });
     }
@@ -126,14 +126,14 @@ export function initCommon() {
 
                 if (isSuccess) {
                     // Mostra mensagem de sucesso
-                    successMsg.style.display = 'block';
-                    errorMsg.style.display = 'none';
+                    successMsg.classList.remove('hidden');
+                    errorMsg.classList.add('hidden');
                     // Limpa o formulário
                     contactForm.reset();
                 } else {
                     // Mostra mensagem de erro
-                    errorMsg.style.display = 'block';
-                    successMsg.style.display = 'none';
+                    errorMsg.classList.remove('hidden');
+                    successMsg.classList.add('hidden');
                 }
 
                 // Restaura o botão
@@ -142,8 +142,8 @@ export function initCommon() {
 
                 // Remove a mensagem após 5 segundos
                 setTimeout(() => {
-                    successMsg.style.display = 'none';
-                    errorMsg.style.display = 'none';
+                    successMsg.classList.add('hidden');
+                    errorMsg.classList.add('hidden');
                 }, 5000);
 
             }, 1500); // Delay de 1.5s para simular rede

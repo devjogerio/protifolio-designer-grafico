@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
 
     // Classes para estados ativo e inativo
-    const activeClasses = ['bg-blue-600', 'text-white', 'shadow-md'];
-    const inactiveClasses = ['bg-white', 'text-slate-600', 'hover:bg-slate-100', 'border', 'border-slate-200'];
+    const activeClasses = ['bg-primary', 'text-white', 'shadow-md'];
+    const inactiveClasses = ['bg-surface', 'text-text-light', 'hover:bg-background', 'border', 'border-border'];
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {

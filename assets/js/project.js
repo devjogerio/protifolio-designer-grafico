@@ -48,35 +48,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // Estrutura: Cabeçalho do projeto -> Detalhes (Grid) -> Galeria de Imagens
     container.innerHTML = `
         <div class="mb-12 text-center">
-            <span class="text-blue-600 uppercase font-semibold tracking-wider text-sm">${project.category}</span>
-            <h1 class="text-4xl md:text-5xl font-heading font-bold text-slate-900 mt-2 mb-4">${project.title}</h1>
-            <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">${project.shortDescription}</p>
+            <span class="text-primary uppercase font-semibold tracking-wider text-sm">${project.category}</span>
+            <h1 class="text-4xl md:text-5xl font-heading font-bold text-text mt-2 mb-4">${project.title}</h1>
+            <p class="text-lg text-text-light max-w-3xl mx-auto leading-relaxed">${project.shortDescription}</p>
         </div>
 
         <div class="grid grid-cols-1 gap-12 mb-16">
             <img src="${project.thumbnail}" alt="${project.title} - Capa" class="w-full h-auto rounded-2xl shadow-lg max-h-[600px] object-cover">
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                    <h3 class="text-xl font-heading font-bold text-slate-900 mb-3 flex items-center gap-2">
-                        <span class="w-2 h-8 bg-blue-500 rounded-full"></span>
+                <div class="bg-surface p-6 rounded-xl border border-border">
+                    <h3 class="text-xl font-heading font-bold text-text mb-3 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-primary rounded-full"></span>
                         O Desafio
                     </h3>
-                    <p class="text-slate-600 leading-relaxed">${project.details.briefing}</p>
+                    <p class="text-text-light leading-relaxed">${project.details.briefing}</p>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                    <h3 class="text-xl font-heading font-bold text-slate-900 mb-3 flex items-center gap-2">
-                        <span class="w-2 h-8 bg-indigo-500 rounded-full"></span>
+                <div class="bg-surface p-6 rounded-xl border border-border">
+                    <h3 class="text-xl font-heading font-bold text-text mb-3 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-secondary rounded-full"></span>
                         A Solução
                     </h3>
-                    <p class="text-slate-600 leading-relaxed">${project.details.solution}</p>
+                    <p class="text-text-light leading-relaxed">${project.details.solution}</p>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                    <h3 class="text-xl font-heading font-bold text-slate-900 mb-3 flex items-center gap-2">
-                        <span class="w-2 h-8 bg-purple-500 rounded-full"></span>
+                <div class="bg-surface p-6 rounded-xl border border-border">
+                    <h3 class="text-xl font-heading font-bold text-text mb-3 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-primary rounded-full"></span>
                         O Resultado
                     </h3>
-                    <p class="text-slate-600 leading-relaxed">${project.details.result}</p>
+                    <p class="text-text-light leading-relaxed">${project.details.result}</p>
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         
         <div class="mt-16 text-center">
-            <a href="index.html#projects" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 transform hover:-translate-y-1">
+            <a href="index.html#projects" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-primary rounded-xl hover:bg-secondary transition-all shadow-lg shadow-primary/30 hover:shadow-primary/50 transform hover:-translate-y-1">
                 Ver outros projetos
             </a>
         </div>
