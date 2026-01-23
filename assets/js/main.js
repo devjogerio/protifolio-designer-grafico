@@ -27,25 +27,25 @@ document.addEventListener('DOMContentLoaded', () => {
     function createProjectCard(project) {
         // Retorna uma string template literal com a estrutura do card estilizado com Tailwind
         return `
-            <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 flex flex-col h-full cursor-pointer" 
+            <article class="group bg-surface rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-border flex flex-col h-full cursor-pointer" 
                      data-category="${project.category}" 
                      onclick="window.location.href='project.html?id=${project.id}'" 
                      role="button" 
                      tabindex="0">
                 <div class="relative overflow-hidden aspect-video">
-                    <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors z-10"></div>
+                    <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors z-10"></div>
                     <img src="${project.thumbnail}" alt="${project.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" loading="lazy">
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
                     <div class="flex items-center gap-2 mb-3">
-                         <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                         <span class="text-xs font-bold uppercase tracking-wider text-blue-600">${project.category}</span>
+                         <span class="w-2 h-2 rounded-full bg-primary"></span>
+                         <span class="text-xs font-bold uppercase tracking-wider text-primary">${project.category}</span>
                     </div>
-                    <h3 class="text-xl font-heading font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">${project.title}</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">${project.shortDescription}</p>
-                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-sm">
-                         <span class="font-medium text-slate-500 group-hover:text-blue-600 transition-colors">Ver Detalhes</span>
-                         <svg class="w-5 h-5 text-blue-500 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    <h3 class="text-xl font-heading font-bold text-text mb-2 group-hover:text-primary transition-colors">${project.title}</h3>
+                    <p class="text-text-light text-sm leading-relaxed mb-4 flex-grow line-clamp-3">${project.shortDescription}</p>
+                    <div class="pt-4 border-t border-border flex items-center justify-between text-sm">
+                         <span class="font-medium text-text-light group-hover:text-primary transition-colors">Ver Detalhes</span>
+                         <svg class="w-5 h-5 text-primary transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </div>
                 </div>
             </article>

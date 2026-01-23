@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!project) {
         container.innerHTML = `
             <div class="text-center py-20">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Projeto não encontrado</h2>
-                <a href="index.html" class="text-blue-600 hover:underline">Voltar para Home</a>
+                <h2 class="text-3xl font-bold text-text mb-4">Projeto não encontrado</h2>
+                <a href="index.html" class="text-primary hover:underline">Voltar para Home</a>
             </div>
         `;
         return;
@@ -57,21 +57,21 @@ document.addEventListener('DOMContentLoaded', () => {
             <img src="${project.thumbnail}" alt="${project.title} - Capa" class="w-full h-auto rounded-2xl shadow-lg max-h-[600px] object-cover">
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-surface p-6 rounded-xl border border-border">
+                <div class="bg-surface p-6 rounded-xl border border-border shadow-sm hover:shadow-lg transition-all duration-300">
                     <h3 class="text-xl font-heading font-bold text-text mb-3 flex items-center gap-2">
                         <span class="w-2 h-8 bg-primary rounded-full"></span>
                         O Desafio
                     </h3>
                     <p class="text-text-light leading-relaxed">${project.details.briefing}</p>
                 </div>
-                <div class="bg-surface p-6 rounded-xl border border-border">
+                <div class="bg-surface p-6 rounded-xl border border-border shadow-sm hover:shadow-lg transition-all duration-300">
                     <h3 class="text-xl font-heading font-bold text-text mb-3 flex items-center gap-2">
                         <span class="w-2 h-8 bg-secondary rounded-full"></span>
                         A Solução
                     </h3>
                     <p class="text-text-light leading-relaxed">${project.details.solution}</p>
                 </div>
-                <div class="bg-surface p-6 rounded-xl border border-border">
+                <div class="bg-surface p-6 rounded-xl border border-border shadow-sm hover:shadow-lg transition-all duration-300">
                     <h3 class="text-xl font-heading font-bold text-text mb-3 flex items-center gap-2">
                         <span class="w-2 h-8 bg-primary rounded-full"></span>
                         O Resultado

@@ -1,40 +1,74 @@
 # Portfólio Profissional - Designer Gráfico
 
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
-![Deploy Status](https://github.com/devjogerio/portifolio-designer-grafico/actions/workflows/deploy.yml/badge.svg)
+![Badge Status](https://img.shields.io/static/v1?label=STATUS&message=FINALIZADO&color=GREEN&style=for-the-badge)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-Este projeto é um portfólio profissional desenvolvido para designers gráficos, focado em apresentar trabalhos de branding, editorial e design digital de forma elegante e responsiva.
+## 1. Visão Geral do Projeto
 
-## 🚀 Tecnologias Utilizadas
+Este projeto é um portfólio profissional moderno e responsivo, desenvolvido para designers gráficos exibirem seus trabalhos de branding, design editorial e mídia digital. A aplicação foi totalmente refatorada para utilizar **Tailwind CSS v4**, garantindo um código limpo, manutenção facilitada e uma interface visualmente consistente com suporte nativo a **Dark Mode** e acessibilidade (WCAG AA).
 
-- **HTML5 Semantic:** Estrutura acessível e otimizada para SEO.
-- **CSS3 Moderno:** Uso de Flexbox, CSS Grid e Variáveis CSS (Custom Properties) para estilização modular e responsiva.
-- **JavaScript (ES6+):** Lógica modularizada utilizando ES Modules.
-- **Vite:** Ferramenta de build e servidor de desenvolvimento ultrarrápido.
-- **Jest:** Framework de testes unitários para garantir a estabilidade do código.
-- **GitHub Actions:** Automação de CI/CD para deploy contínuo.
+A arquitetura é baseada em componentes modulares e renderização dinâmica de conteúdo via JavaScript, permitindo fácil atualização dos projetos exibidos sem necessidade de alterar o HTML.
 
-## 📋 Funcionalidades
+## 2. Índice de Conteúdos
 
-- **Design Responsivo:** Layout adaptável para Mobile, Tablet e Desktop.
-- **Sistema de Temas:** Suporte completo a Dark Mode e Light Mode com persistência de preferência do usuário (localStorage) e detecção automática do sistema.
-- **Galeria Dinâmica:** Renderização de projetos via JavaScript a partir de uma estrutura de dados JSON.
-- **Página de Detalhes:** Navegação para página interna de projeto com carregamento de conteúdo via URL Parameters.
-- **Formulário com Validação:** Máscara de entrada para WhatsApp e feedback visual de envio.
+- [1. Visão Geral do Projeto](#1-visão-geral-do-projeto)
+- [2. Índice de Conteúdos](#2-índice-de-conteúdos)
+- [3. Funcionalidades Implementadas](#3-funcionalidades-implementadas)
+- [4. Configuração e Instalação](#4-configuração-e-instalação)
+- [5. Uso e Exemplos](#5-uso-e-exemplos)
+- [6. Estrutura do Projeto](#6-estrutura-do-projeto)
+- [7. Tecnologias e Dependências](#7-tecnologias-e-dependências)
+- [8. Contribuição](#8-contribuição)
+- [9. Licença](#9-licença)
 
-## 🔧 Configuração e Instalação
+## 3. Funcionalidades Implementadas
+
+### Interface e UX
+
+- **Refatoração Completa com Tailwind CSS**: Migração de todo o CSS customizado para classes utilitárias do Tailwind v4.
+- **Design Responsivo**: Layout fluido que se adapta perfeitamente a Mobile, Tablet e Desktop.
+- **Dark Mode / Light Mode**:
+  - Detecção automática da preferência do sistema.
+  - Botão de alternância manual com persistência local (`localStorage`).
+  - Cores semânticas (`bg-surface`, `text-text`, `border-border`) configuradas via variáveis CSS para consistência total.
+  - Conformidade com **WCAG AA** para contraste de texto em ambos os temas.
+- **Animações e Transições**: Feedback visual em hover, focus e transições suaves de tema.
+
+### Funcionalidades Core
+
+- **Galeria de Projetos Dinâmica**: Cards de projetos gerados via JavaScript a partir de um arquivo de dados (`data.js`), facilitando a adição de novos trabalhos.
+- **Página de Detalhes do Projeto**:
+  - Navegação via parâmetros de URL (`project.html?id=X`).
+  - Injeção dinâmica de conteúdo (título, descrição, desafios, solução, resultados).
+  - Tratamento de erro 404 para IDs inválidos.
+- **Filtragem de Projetos**: Sistema de filtros por categoria (Branding, Editorial, UX/UI, Social Media).
+- **Formulário de Contato**:
+  - Máscara de entrada automática para WhatsApp.
+  - Validação visual de campos.
+  - Feedback de sucesso/erro simulado (UI/UX).
+
+### Melhorias Recentes
+
+- **Duplicação de Cards**: Funcionalidade implementada para duplicar cards de projetos mantendo integridade visual e funcional.
+- **Refatoração Semântica**: Uso de tags HTML5 semânticas (`article`, `section`, `header`, `footer`) combinadas com classes descritivas do Tailwind.
+
+## 4. Configuração e Instalação
+
+Siga os passos abaixo para rodar o projeto localmente:
 
 ### Pré-requisitos
 
-Certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
+- [Node.js](https://nodejs.org/) (versão 18 ou superior recomendada)
+- Gerenciador de pacotes `npm` (incluso no Node.js)
 
-### Passos
+### Passo a Passo
 
 1.  **Clone o repositório:**
 
     ```bash
-    git clone https://github.com/seu-usuario/nome-do-repositorio.git
-    cd nome-do-repositorio
+    git clone https://github.com/devjogerio/portifolio-designer-grafico.git
+    cd portifolio-designer-grafico
     ```
 
 2.  **Instale as dependências:**
@@ -43,59 +77,118 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
     npm install
     ```
 
-3.  **Inicie o servidor de desenvolvimento:**
+3.  **Gere o CSS do Tailwind (Build Inicial):**
+
+    ```bash
+    npx @tailwindcss/cli -i assets/css/input.css -o assets/css/style.css
+    ```
+
+    _Nota: Este passo é necessário para garantir que o arquivo `style.css` final exista antes de rodar o servidor._
+
+4.  **Inicie o servidor de desenvolvimento:**
     ```bash
     npm run dev
     ```
-    O projeto estará acessível em `http://localhost:3000` (ou outra porta indicada).
+    O projeto estará acessível em `http://localhost:5173` (ou outra porta indicada pelo Vite).
 
-## 📦 Build e Deploy
+## 5. Uso e Exemplos
 
-O projeto está configurado para deploy automático no **GitHub Pages** utilizando GitHub Actions.
+### Adicionar um Novo Projeto
 
-### Comandos Disponíveis
+Para adicionar um novo projeto ao portfólio, edite o arquivo `assets/js/data.js`:
 
-- `npm run dev`: Inicia o servidor local.
-- `npm run build`: Gera a versão de produção otimizada na pasta `dist/`.
-- `npm run preview`: Visualiza localmente a versão de produção gerada.
-- `npm test`: Executa os testes unitários.
-
-### Processo de Deploy Automático
-
-1.  Certifique-se de que a opção de **GitHub Pages** nas configurações do repositório esteja desativada ou apontando para a branch `gh-pages` (que será criada automaticamente).
-2.  Faça o push das alterações para a branch `main`.
-3.  A action **Deploy to GitHub Pages** será disparada automaticamente.
-4.  Após a conclusão, seu site estará no ar em `https://seu-usuario.github.io/nome-do-repositorio/`.
-
-## 🧪 Testes
-
-Para executar os testes unitários dos módulos de lógica (ThemeManager, StorageAdapter):
-
-```bash
-npm test
+```javascript
+// assets/js/data.js
+export const projectsData = [
+  // ... projetos existentes
+  {
+    id: 6, // Novo ID único
+    title: 'Nome do Novo Projeto',
+    category: 'branding', // branding, editorial, ux-ui, social-media
+    shortDescription: 'Descrição curta para o card na home.',
+    thumbnail: 'assets/img/novo-projeto.jpg',
+    details: {
+      briefing: 'O desafio do projeto...',
+      solution: 'A solução encontrada...',
+      result: 'Os resultados obtidos...',
+      images: ['assets/img/detalhe-1.jpg', 'assets/img/detalhe-2.jpg'],
+    },
+  },
+];
 ```
 
-## 📂 Estrutura de Pastas
+O sistema renderizará automaticamente o card na Home e criará a página de detalhes.
+
+### Personalizar Cores (Tailwind)
+
+As cores do tema são definidas em `assets/css/input.css` utilizando variáveis CSS e a diretiva `@theme`:
+
+```css
+/* assets/css/input.css */
+@layer base {
+  :root {
+    --color-primary: #2563eb; /* Azul padrão */
+    /* ... */
+  }
+  :root.dark {
+    --color-primary: #3b82f6; /* Azul mais claro para dark mode */
+    /* ... */
+  }
+}
+```
+
+## 6. Estrutura do Projeto
+
+A organização de pastas segue uma arquitetura modular:
 
 ```
 /
-├── .github/workflows/   # Configurações de CI/CD
 ├── assets/
-│   ├── css/             # Estilos globais e variáveis
-│   └── js/              # Lógica da aplicação
-│       ├── modules/     # Módulos reutilizáveis (ESM)
-│       ├── common.js    # Lógica comum a todas as páginas
-│       ├── data.js      # Fonte de dados dos projetos
-│       ├── main.js      # Entry point da Home
-│       └── project.js   # Entry point da Página de Projeto
-├── tests/               # Testes unitários (Jest)
-├── dist/                # Arquivos de produção (gerado pelo build)
-├── index.html           # Página inicial
-├── project.html         # Página de detalhes
-├── vite.config.js       # Configuração do bundler
-└── package.json         # Dependências e scripts
+│   ├── css/
+│   │   ├── input.css        # Entrada do Tailwind (Variáveis e Configurações)
+│   │   └── style.css        # Saída compilada (NÃO EDITAR MANUALMENTE)
+│   ├── img/                 # Imagens do projeto
+│   └── js/
+│       ├── modules/         # Módulos ES6 (ThemeManager, StorageAdapter)
+│       ├── common.js        # Scripts compartilhados (Menu, Tema)
+│       ├── data.js          # Base de dados JSON dos projetos
+│       ├── main.js          # Lógica da Página Inicial
+│       └── project.js       # Lógica da Página de Detalhes
+├── index.html               # Página Principal
+├── project.html             # Página de Detalhes
+├── package.json             # Dependências e Scripts
+└── README.md                # Documentação
 ```
 
-## 📄 Licença
+## 7. Tecnologias e Dependências
 
-Este projeto está sob a licença MIT. Sinta-se à vontade para usar e modificar.
+### Core
+
+- **HTML5**: Estrutura semântica.
+- **JavaScript (ES Modules)**: Lógica da aplicação.
+- **Tailwind CSS v4**: Framework de estilização utility-first.
+
+### Ferramentas de Desenvolvimento
+
+- **Vite**: Bundler e servidor de desenvolvimento (`^7.3.1`).
+- **@tailwindcss/cli**: Compilador do Tailwind (`^4.1.18`).
+- **Jest**: Testes unitários (`^29.7.0`).
+- **PostCSS / Autoprefixer**: Processamento de CSS.
+
+## 8. Contribuição
+
+Contribuições são bem-vindas! Se você deseja melhorar este projeto:
+
+1.  Faça um **Fork** do projeto.
+2.  Crie uma **Branch** para sua feature (`git checkout -b feature/MinhaFeature`).
+3.  Faça o **Commit** das suas mudanças (`git commit -m 'Adiciona: MinhaFeature'`).
+4.  Faça o **Push** para a branch (`git push origin feature/MinhaFeature`).
+5.  Abra um **Pull Request**.
+
+## 9. Licença
+
+Este projeto está licenciado sob a licença **MIT**. Veja o arquivo `LICENSE` para mais detalhes.
+
+---
+
+Desenvolvido por **Roger Designer** - 2026.
