@@ -137,6 +137,84 @@ export const projectsData = [
     },
     {
         // Identificador único do projeto
+        id: 5,
+        // Título do projeto
+        title: "Campanha Verão - Solare",
+        // Categoria do projeto
+        category: "social-media",
+        // Imagem de thumbnail
+        thumbnail: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        // Descrição curta
+        shortDescription: "Peças para redes sociais divulgando a nova coleção de óculos.",
+        // Detalhes do projeto
+        details: {
+            // Briefing
+            briefing: "Gerar buzz e engajamento no Instagram para o lançamento da coleção de verão.",
+            // Solução
+            solution: "Série de posts animados e stories interativos com estética vibrante e solar.",
+            // Resultado
+            result: "Alcance de 100k contas orgânicas e aumento de 15% nas vendas diretas pelo link da bio.",
+            // Imagens do projeto
+            images: [
+                "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ]
+        }
+    },
+    {
+        // Identificador único do projeto
+        id: 5,
+        // Título do projeto
+        title: "Campanha Verão - Solare",
+        // Categoria do projeto
+        category: "social-media",
+        // Imagem de thumbnail
+        thumbnail: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        // Descrição curta
+        shortDescription: "Peças para redes sociais divulgando a nova coleção de óculos.",
+        // Detalhes do projeto
+        details: {
+            // Briefing
+            briefing: "Gerar buzz e engajamento no Instagram para o lançamento da coleção de verão.",
+            // Solução
+            solution: "Série de posts animados e stories interativos com estética vibrante e solar.",
+            // Resultado
+            result: "Alcance de 100k contas orgânicas e aumento de 15% nas vendas diretas pelo link da bio.",
+            // Imagens do projeto
+            images: [
+                "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ]
+        }
+    },
+    {
+        // Identificador único do projeto
+        id: 5,
+        // Título do projeto
+        title: "Campanha Verão - Solare",
+        // Categoria do projeto
+        category: "social-media",
+        // Imagem de thumbnail
+        thumbnail: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        // Descrição curta
+        shortDescription: "Peças para redes sociais divulgando a nova coleção de óculos.",
+        // Detalhes do projeto
+        details: {
+            // Briefing
+            briefing: "Gerar buzz e engajamento no Instagram para o lançamento da coleção de verão.",
+            // Solução
+            solution: "Série de posts animados e stories interativos com estética vibrante e solar.",
+            // Resultado
+            result: "Alcance de 100k contas orgânicas e aumento de 15% nas vendas diretas pelo link da bio.",
+            // Imagens do projeto
+            images: [
+                "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            ]
+        }
+    },
+    {
+        // Identificador único do projeto
         id: 6,
         // Título do projeto
         title: "Festival de Jazz - Poster",
