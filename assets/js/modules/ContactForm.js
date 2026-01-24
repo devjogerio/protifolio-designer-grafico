@@ -14,7 +14,7 @@
  */
 export function initContactForm() {
     const contactForm = document.getElementById('contact-form');
-    
+
     // Se o formulário não existir na página (ex: página de detalhes), encerra a execução.
     if (!contactForm) return;
 
@@ -53,11 +53,11 @@ function setupWhatsappMask() {
 
         // Validação visual simples (borda verde se completo)
         if (value.length >= 14) { // (XX) XXXXX-XXXX tem 15 chars, (XX) XXXX-XXXX tem 14
-             whatsappInput.classList.remove('border-border', 'focus:border-primary');
-             whatsappInput.classList.add('border-green-500', 'focus:border-green-500');
+            whatsappInput.classList.remove('border-border', 'focus:border-primary');
+            whatsappInput.classList.add('border-green-500', 'focus:border-green-500');
         } else {
-             whatsappInput.classList.remove('border-green-500', 'focus:border-green-500');
-             whatsappInput.classList.add('border-border', 'focus:border-primary');
+            whatsappInput.classList.remove('border-green-500', 'focus:border-green-500');
+            whatsappInput.classList.add('border-border', 'focus:border-primary');
         }
     });
 }
@@ -80,14 +80,14 @@ async function handleFormSubmit(e) {
 
     // 2. Preparação para Envio
     setLoadingState(submitBtn, true);
-    
+
     // Coleta os dados do formulário
     const formData = new FormData(form);
-    
+
     // Configurações adicionais para o FormSubmit
     // _captcha: false para não pedir captcha (opcional, pode ser true)
     // _template: table (padrão) ou box
-    formData.append('_captcha', 'false'); 
+    // Removemos append manual de _captcha aqui pois já está no HTML
     formData.append('_subject', `Novo contato do Portfólio: ${formData.get('name')}`);
 
     try {
@@ -95,6 +95,9 @@ async function handleFormSubmit(e) {
         // Usamos o endpoint AJAX do FormSubmit para não redirecionar a página
         const response = await fetch("https://formsubmit.co/ajax/fourcolors.dev@outlook.com.br", {
             method: "POST",
+            headers: {
+                'Accept': 'application/json'
+            },
             body: formData
         });
 
@@ -104,7 +107,7 @@ async function handleFormSubmit(e) {
             // Sucesso
             showFeedback('success', 'Mensagem enviada com sucesso! Em breve entrarei em contato.');
             form.reset(); // Limpa os campos
-            
+
             // Remove validações visuais (bordas verdes/vermelhas)
             resetFieldStyles(form);
         } else {
@@ -133,7 +136,7 @@ function validateForm(form) {
     inputs.forEach(input => {
         // Remove espaços em branco extras
         const value = input.value.trim();
-        
+
         // Verifica se está vazio
         if (!value) {
             markFieldAsInvalid(input);
@@ -220,7 +223,7 @@ function showFeedback(type, message) {
         feedbackContainer = document.createElement('div');
         feedbackContainer.id = 'form-feedback';
         feedbackContainer.className = 'mt-4 text-center p-4 rounded-lg hidden transition-all duration-300';
-        
+
         // Insere antes do botão de submit (último filho do form)
         // form.appendChild(feedbackContainer) colocaria no final, que é o desejado (abaixo do botão)
         // Mas o design atual tem o botão dentro do form. Vamos colocar DEPOIS do botão.
