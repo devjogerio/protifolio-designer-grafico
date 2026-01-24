@@ -17,10 +17,11 @@ A arquitetura é baseada em componentes modulares e renderização dinâmica de 
 - [3. Funcionalidades Implementadas](#3-funcionalidades-implementadas)
 - [4. Configuração e Instalação](#4-configuração-e-instalação)
 - [5. Uso e Exemplos](#5-uso-e-exemplos)
-- [6. Estrutura do Projeto](#6-estrutura-do-projeto)
-- [7. Tecnologias e Dependências](#7-tecnologias-e-dependências)
-- [8. Contribuição](#8-contribuição)
-- [9. Licença](#9-licença)
+- [6. Deploy na Vercel](#6-deploy-na-vercel)
+- [7. Estrutura do Projeto](#7-estrutura-do-projeto)
+- [8. Tecnologias e Dependências](#8-tecnologias-e-dependências)
+- [9. Contribuição](#9-contribuição)
+- [10. Licença](#10-licença)
 
 ## 3. Funcionalidades Implementadas
 
@@ -155,7 +156,38 @@ As cores do tema são definidas em `assets/css/input.css` utilizando variáveis 
 }
 ```
 
-## 6. Estrutura do Projeto
+## 6. Deploy na Vercel
+
+O projeto está pronto para ser hospedado na Vercel, que oferece suporte nativo para as funcionalidades Serverless utilizadas no formulário de contato.
+
+### Deploy Automático (Recomendado)
+
+1.  Faça o push do seu código para o GitHub.
+2.  Acesse [vercel.com](https://vercel.com) e faça login.
+3.  Clique em **"Add New..."** > **"Project"**.
+4.  Importe o repositório `portifolio-designer-grafico`.
+5.  A Vercel detectará automaticamente que é um projeto Vite. As configurações de Build devem ser:
+    - **Framework Preset:** Vite
+    - **Root Directory:** `./`
+6.  **Importante:** Na seção **Environment Variables**, adicione as variáveis do seu `.env`:
+    - `EMAIL_USER`: Seu email do Outlook.
+    - `EMAIL_PASS`: Sua senha de aplicativo.
+7.  Clique em **Deploy**.
+
+### Deploy via CLI
+
+Se preferir usar a linha de comando:
+
+```bash
+npm i -g vercel
+vercel login
+vercel link
+vercel env add EMAIL_USER production
+vercel env add EMAIL_PASS production
+vercel deploy --prod
+```
+
+## 7. Estrutura do Projeto
 
 A organização de pastas segue uma arquitetura modular:
 
@@ -178,7 +210,7 @@ A organização de pastas segue uma arquitetura modular:
 └── README.md                # Documentação
 ```
 
-## 7. Tecnologias e Dependências
+## 8. Tecnologias e Dependências
 
 ### Core
 
@@ -193,7 +225,7 @@ A organização de pastas segue uma arquitetura modular:
 - **Jest**: Testes unitários (`^29.7.0`).
 - **PostCSS / Autoprefixer**: Processamento de CSS.
 
-## 8. Contribuição
+## 9. Contribuição
 
 Contribuições são bem-vindas! Se você deseja melhorar este projeto:
 
@@ -203,7 +235,7 @@ Contribuições são bem-vindas! Se você deseja melhorar este projeto:
 4.  Faça o **Push** para a branch (`git push origin feature/MinhaFeature`).
 5.  Abra um **Pull Request**.
 
-## 9. Licença
+## 10. Licença
 
 Este projeto está licenciado sob a licença **MIT**. Veja o arquivo `LICENSE` para mais detalhes.
 
