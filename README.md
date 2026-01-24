@@ -70,14 +70,21 @@ Siga os passos abaixo para rodar o projeto localmente:
 
 O formulário de contato utiliza uma função serverless (`api/send-email.js`) que requer variáveis de ambiente configuradas.
 
+> **⚠️ IMPORTANTE: Bloqueio de Autenticação Básica Microsoft**
+>
+> Contas pessoais Outlook/Hotmail/Live desabilitaram autenticação básica (apenas email/senha). Para que o envio funcione:
+> 1. Ative a **Verificação em Duas Etapas (2FA)** na sua conta Microsoft.
+> 2. Gere uma **Senha de Aplicativo** (App Password) no painel de segurança da Microsoft.
+> 3. Use essa App Password no lugar da sua senha normal no arquivo `.env`.
+
 1.  Renomeie o arquivo `.env.example` para `.env` na raiz do projeto:
     ```bash
     cp .env.example .env
     ```
 2.  Edite o arquivo `.env` e adicione suas credenciais do Outlook:
     ```ini
-    EMAIL_USER=seu-email@outlook.com.br
-    EMAIL_PASS=sua-senha-de-app # Use Senha de Aplicativo se tiver 2FA ativado
+    EMAIL_USER=fourcolors.dev@outlook.com.br
+    EMAIL_PASS=sua-senha-de-aplicativo-aqui
     ```
     _Nota: Nunca comite o arquivo `.env` no Git!_
 

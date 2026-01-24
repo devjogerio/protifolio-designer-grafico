@@ -39,5 +39,14 @@ export default defineConfig({
         open: true,
         // Define a porta do servidor local
         port: 3000,
+        // Configura Proxy para redirecionar chamadas de API (/api) para o backend local (Express)
+        // Isso permite testar a função serverless localmente sem precisar fazer deploy
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3005', // Porta onde o server.js está rodando
+                changeOrigin: true,
+                secure: false,
+            }
+        }
     }
 });
