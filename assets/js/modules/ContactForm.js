@@ -8,11 +8,17 @@
  * 4. Feedback visual para o usuário (sucesso, erro, carregando).
  */
 
+import { initEmailJS } from './email/emailjs-config.js';
+import { sendEmail } from './email/email-service.js';
+
 /**
  * Inicializa o formulário de contato.
  * Deve ser chamado quando o DOM estiver pronto.
  */
 export function initContactForm() {
+    // Inicializa o serviço de email (EmailJS)
+    initEmailJS();
+
     const contactForm = document.getElementById('contact-form');
 
     // Se o formulário não existir na página (ex: página de detalhes), encerra a execução.
@@ -86,33 +92,26 @@ async function handleFormSubmit(e) {
     const data = Object.fromEntries(formData.entries());
 
     try {
-        // 3. Envio Assíncrono via Fetch para nosso Backend Próprio (Serverless)
-        const response = await fetch("/api/send-email", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
+        // 3. Envio Assíncrono via EmailJS
+        // -------------------------------
+        // A função sendEmail já trata a comunicação com a API e retorna um objeto padronizado
+        const result = await sendEmail(data);
 
-        const result = await response.json();
-
-        if (response.ok && result.success) {
+        if (result.success) {
             // Sucesso
-            showFeedback('success', 'Mensagem enviada com sucesso! Em breve entrarei em contato.');
+            showFeedback('success', result.message);
             form.reset(); // Limpa os campos
 
             // Remove validações visuais (bordas verdes/vermelhas)
             resetFieldStyles(form);
         } else {
-            // Erro retornado pela API
-            throw new Error(result.error || 'Erro ao enviar mensagem.');
+            // Erro tratado no serviço (ex: validação ou erro de API)
+            throw new Error(result.message);
         }
 
     } catch (error) {
-        console.error('Erro no envio:', error);
-        showFeedback('error', 'Ocorreu um erro ao enviar. Verifique sua conexão ou tente mais tarde.');
+        console.error('Erro no fluxo de envio:', error);
+        showFeedback('error', error.message || 'Ocorreu um erro ao enviar. Tente novamente.');
     } finally {
         // 4. Restaura estado do botão
         setLoadingState(submitBtn, false, originalBtnText);
