@@ -1,32 +1,53 @@
+<!-- 
+    Arquivo: project.html
+    ---------------------
+    Página de detalhes de um projeto específico.
+    Esta página serve como um "template" vazio que será preenchido via JavaScript (project.js)
+    com base no ID do projeto passado na URL (ex: project.html?id=1).
+-->
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 
 <head>
+    <!-- Metadados -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- O título será atualizado dinamicamente pelo JS para incluir o nome do projeto -->
     <title>Detalhes do Projeto | Portfólio Designer Gráfico</title>
 
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Compilado -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body class="bg-background text-text font-sans antialiased selection:bg-primary/20 selection:text-primary">
 
-    <!-- Header Simplificado -->
+    <!-- 
+        Header Simplificado
+        Diferente da Home, aqui temos um header mais limpo, focado em navegação de retorno.
+    -->
     <header class="fixed w-full bg-surface/90 backdrop-blur-md z-50 border-b border-border shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
                 <a href="index.html" class="text-2xl font-heading font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary hover:opacity-80 transition-opacity">
                     Roger Designer
                 </a>
 
+                <!-- Controles (Tema e Voltar) -->
                 <div class="flex items-center gap-4">
+                    <!-- Botão de Tema -->
                     <button id="theme-toggle" class="p-2 rounded-full hover:bg-background transition-colors text-text-light" aria-label="Alternar Tema">
                         <span class="dark:hidden">🌙</span>
                         <span class="hidden dark:inline">☀️</span>
                     </button>
+                    
+                    <!-- Botão Voltar -->
                     <a href="index.html" class="flex items-center gap-2 text-text-light hover:text-primary font-medium transition-colors">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
@@ -39,20 +60,29 @@
     </header>
 
     <main class="pt-32 pb-20">
+        <!-- 
+            Container Principal do Conteúdo
+            - Este elemento <article> está vazio inicialmente.
+            - O script project.js vai injetar todo o conteúdo do projeto aqui.
+            - O conteúdo inicial é um "Loading State" (esqueleto) para feedback visual.
+        -->
         <article id="project-content" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[50vh]">
+            <!-- Estado de Carregamento (Skeleton) -->
             <div class="flex justify-center items-center h-64 text-text-light animate-pulse">
                 Carregando projeto...
             </div>
         </article>
     </main>
 
+    <!-- Rodapé Simples -->
     <footer class="bg-surface border-t border-border py-12 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-text-light">
+            <!-- O ano é inserido via JS (common.js) -->
             <p>&copy; <span id="current-year"></span> Roger Designer.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Script Específico da Página -->
     <script type="module" src="assets/js/project.js"></script>
 </body>
 

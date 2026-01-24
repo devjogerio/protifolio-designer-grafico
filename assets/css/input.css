@@ -1,45 +1,67 @@
 @import 'tailwindcss';
 
+/* 
+  Camada Base (@layer base)
+  -------------------------
+  Aqui definimos as variáveis CSS nativas (CSS Custom Properties) que alimentam o sistema de design.
+  Usar variáveis permite trocar temas (Dark/Light) dinamicamente apenas mudando os valores das cores.
+*/
 @layer base {
+  /* Tema Claro (Padrão) */
   :root {
-    --color-primary: #2563eb;
-    --color-secondary: #1e40af;
-    --color-background: #f8fafc;
-    --color-surface: #ffffff;
-    --color-text: #1e293b;
-    --color-text-light: #64748b;
-    --color-border: #e2e8f0;
+    /* Cores de Ação */
+    --color-primary: #2563eb;   /* Azul vibrante para botões e destaques */
+    --color-secondary: #1e40af; /* Azul mais escuro para estados de hover */
+    
+    /* Cores de Estrutura */
+    --color-background: #f8fafc; /* Fundo geral da página (cinza muito claro) */
+    --color-surface: #ffffff;    /* Fundo de cards e seções destacadas (branco) */
+    
+    /* Tipografia e Bordas */
+    --color-text: #1e293b;       /* Texto principal (cinza escuro, quase preto) - Alto contraste */
+    --color-text-light: #64748b; /* Texto secundário (cinza médio) - Para descrições */
+    --color-border: #e2e8f0;     /* Cor de bordas sutis */
   }
 
+  /* Tema Escuro (.dark) */
+  /* Essas variáveis sobrescrevem as do :root quando a classe .dark está presente no elemento html ou body */
   :root.dark {
-    --color-primary: #3b82f6;
-    --color-secondary: #60a5fa;
-    --color-background: #0f172a;
-    --color-surface: #1e293b;
-    --color-text: #f1f5f9;
-    --color-text-light: #94a3b8;
-    --color-border: #334155;
+    --color-primary: #3b82f6;    /* Azul um pouco mais claro para brilhar no fundo escuro */
+    --color-secondary: #60a5fa;  /* Azul ainda mais claro para hover */
+    
+    --color-background: #0f172a; /* Fundo muito escuro (azul noturno) */
+    --color-surface: #1e293b;    /* Superfície um pouco mais clara que o fundo */
+    
+    --color-text: #f1f5f9;       /* Texto quase branco para contraste no fundo escuro */
+    --color-text-light: #94a3b8; /* Texto cinza claro */
+    --color-border: #334155;     /* Bordas mais escuras para não ofuscar */
   }
 
+  /* Configuração global do HTML */
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Rolagem suave ao clicar em âncoras */
   }
 
+  /* Estilos base do Body */
   body {
+    /* @apply permite usar classes do Tailwind dentro do CSS */
     @apply bg-background text-text antialiased;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  /* Estilos base para Títulos */
+  h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-bold text-text;
   }
 }
 
+/* 
+  Configuração do Tema Tailwind v4 (@theme)
+  -----------------------------------------
+  Aqui mapeamos as variáveis CSS criadas acima para nomes de utilitários do Tailwind.
+  Ex: --color-primary vira a classe .bg-primary, .text-primary, etc.
+*/
 @theme {
+  /* Mapeamento de Cores */
   --color-primary: var(--color-primary);
   --color-secondary: var(--color-secondary);
   --color-background: var(--color-background);
@@ -48,20 +70,34 @@
   --color-text-light: var(--color-text-light);
   --color-border: var(--color-border);
 
+  /* Mapeamento de Fontes */
   --font-sans: Inter, sans-serif;
   --font-heading: Montserrat, sans-serif;
 }
 
+/* 
+  Camada de Componentes (@layer components)
+  -----------------------------------------
+  Aqui criamos classes compostas (componentes) para reutilizar padrões de design.
+  Isso evita repetição excessiva de classes utilitárias no HTML (famoso "soup of classes").
+*/
 @layer components {
+  /* Botão Padrão */
   .btn {
     @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
+  
+  /* Variação Primária do Botão */
   .btn-primary {
     @apply bg-primary text-white hover:bg-secondary focus:ring-primary shadow-lg hover:shadow-xl;
   }
+  
+  /* Container Centralizado */
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+  
+  /* Card Padrão */
   .card {
     @apply bg-surface rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-border;
   }

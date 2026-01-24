@@ -90,7 +90,8 @@ describe('ThemeManager', () => {
         const result = themeManager.init();
 
         expect(result).toBe('light');
-        expect(document.documentElement.classList.contains('light')).toBe(true);
+        // No Tailwind, Light mode é a ausência da classe 'dark', não a presença da classe 'light'
+        expect(document.documentElement.classList.contains('dark')).toBe(false);
     });
 
     test('Deve alternar (toggle) de Light para Dark corretamente', () => {
@@ -110,6 +111,7 @@ describe('ThemeManager', () => {
     test('Deve alternar (toggle) de Dark para Light corretamente', () => {
         // Estado inicial Dark
         themeManager.currentTheme = 'dark';
+        document.documentElement.classList.add('dark'); // Simula estado inicial no DOM
         
         // Executa toggle
         const newTheme = themeManager.toggleTheme();
@@ -118,22 +120,22 @@ describe('ThemeManager', () => {
         expect(newTheme).toBe('light'); // Deve virar light
         expect(themeManager.getCurrentTheme()).toBe('light');
         expect(mockStorageAdapter.setItem).toHaveBeenCalledWith('user_theme_preference', 'light');
-        expect(document.documentElement.classList.contains('light')).toBe(true);
+        // Garante que 'dark' foi removido. Não checamos por 'light' pois ela não é usada.
+        expect(document.documentElement.classList.contains('dark')).toBe(false);
     });
 
     test('ApplyTheme deve remover classes antigas e adicionar a nova', () => {
-        // Simula que já tem uma classe antiga
+        // Simula que já tem a classe dark
+        document.documentElement.classList.add('dark');
         document.documentElement.classList.add('random-class');
-        document.documentElement.classList.add('light');
 
-        // Aplica tema dark
-        themeManager.applyTheme('dark');
+        // Aplica tema light
+        themeManager.applyTheme('light');
 
         // Verifica limpeza e aplicação
-        expect(document.documentElement.classList.contains('light')).toBe(false); // Removeu light
-        expect(document.documentElement.classList.contains('dark')).toBe(true); // Adicionou dark
-        expect(document.documentElement.classList.contains('random-class')).toBe(true); // Manteve outras classes (comportamento desejado: remove apenas temas)
-        expect(document.documentElement.getAttribute('data-theme')).toBe('dark'); // Atributo de dados
+        expect(document.documentElement.classList.contains('dark')).toBe(false); // Removeu dark
+        expect(document.documentElement.classList.contains('random-class')).toBe(true); // Manteve outras classes
+        expect(document.documentElement.getAttribute('data-theme')).toBe('light'); // Atributo de dados
     });
     
     test('Init deve usar fallback "light" se matchMedia não estiver disponível', () => {

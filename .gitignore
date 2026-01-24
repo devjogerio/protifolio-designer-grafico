@@ -1,26 +1,75 @@
-# Logs e Arquivos de Sistema
+# Arquivo .gitignore
+# ------------------
+# Este arquivo diz ao Git quais arquivos ou pastas ele deve IGNORAR.
+# Arquivos ignorados não são rastreados, não aparecem no 'git status' e não vão para o repositório remoto.
+# Isso é crucial para segurança, limpeza e performance.
+
+# ==============================================================================
+# 1. Arquivos de Sistema Operacional
+# ==============================================================================
+# .DS_Store: Arquivo de metadados criado automaticamente pelo macOS em cada pasta.
 .DS_Store
+# Thumbs.db: Arquivo de cache de miniaturas de imagens do Windows.
 Thumbs.db
+
+# ==============================================================================
+# 2. Logs e Depuração
+# ==============================================================================
+# *.log: Ignora qualquer arquivo que termine em .log (ex: npm-debug.log).
+# Logs são gerados localmente para erros e não devem ser versionados.
 *.log
+# Diretório de logs do NPM
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Dependências
+# ==============================================================================
+# 3. Dependências do Projeto
+# ==============================================================================
+# node_modules/: Esta pasta contém milhares de bibliotecas baixadas pelo npm.
+# Ela é pesada e pode ser recriada a qualquer momento com 'npm install'.
+# NUNCA versione node_modules.
 node_modules/
-package-lock.json # Opcional: manter se quiser versionar as versões exatas, ignorar se preferir atualizar sempre. (Geralmente mantém-se)
 
-# Build de Produção
+# ==============================================================================
+# 4. Build e Distribuição
+# ==============================================================================
+# dist/: Pasta onde o Vite coloca os arquivos finais (minificados/otimizados) para produção.
+# O build é gerado a partir do código fonte, então não precisamos versionar o resultado.
 dist/
+# build/: Nome alternativo comum para pasta de build.
 build/
 
-# Variáveis de Ambiente
+# ==============================================================================
+# 5. Segurança e Variáveis de Ambiente (CRÍTICO)
+# ==============================================================================
+# .env: Arquivo que contém senhas, chaves de API e segredos.
+# NUNCA, EM HIPÓTESE ALGUMA, suba este arquivo para o Git.
 .env
+# Variações de arquivos de ambiente locais
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Editor / IDE
+# ==============================================================================
+# 6. Configurações de Editor/IDE
+# ==============================================================================
+# .vscode/: Configurações locais do VS Code (exceto se quiser compartilhar settings.json).
 .vscode/
+# .idea/: Configurações da IDE IntelliJ/WebStorm.
 .idea/
 
-# Cobertura de Testes
+# ==============================================================================
+# 7. Testes e Cobertura
+# ==============================================================================
+# coverage/: Pasta gerada pelo Jest com os relatórios HTML de cobertura de código.
 coverage/
+
+# ==============================================================================
+# 8. Arquivos Temporários e Caches
+# ==============================================================================
+.eslintcache
+.cache
+tmp/
+temp/

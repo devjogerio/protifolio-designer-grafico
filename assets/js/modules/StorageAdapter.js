@@ -1,118 +1,131 @@
 /**
  * Módulo StorageAdapter
- * Responsável por abstrair a interação com mecanismos de persistência (localStorage/sessionStorage).
- * Implementa tratamento de erros robusto para casos de falha de acesso ou cota excedida.
+ * ---------------------
+ * Este módulo atua como um "wrapper" (envelope) para a API de armazenamento do navegador
+ * (localStorage ou sessionStorage).
+ *
+ * Objetivo:
+ * - Centralizar o acesso a dados persistentes.
+ * - Tratar erros de forma segura (ex: modo anônimo, cota excedida).
+ * - Prover métodos utilitários para serialização (JSON) automática.
  */
 
 export default class StorageAdapter {
     /**
      * Construtor da classe.
-     * @param {Storage} storageMechanism - O mecanismo de armazenamento a ser usado (padrão: localStorage).
-     * Permite injeção de dependência para facilitar testes unitários.
+     * @param {Storage} storageMechanism - O mecanismo a ser usado. Padrão: localStorage.
+     * Permitimos a injeção do mecanismo para facilitar testes (mocks) ou trocar para sessionStorage.
      */
     constructor(storageMechanism = localStorage) {
-        // Armazena a referência ao mecanismo de storage (localStorage ou sessionStorage)
+        // Armazena a referência ao mecanismo escolhido (ex: window.localStorage)
         this.storage = storageMechanism;
     }
 
     /**
      * Salva um valor no armazenamento.
-     * @param {string} key - A chave identificadora do dado.
-     * @param {any} value - O valor a ser salvo (será serializado para JSON).
-     * @returns {boolean} - Retorna true se salvou com sucesso, false caso contrário.
+     * @param {string} key - A chave única para identificar o dado.
+     * @param {any} value - O dado a ser salvo (objeto, array, string, number).
+     * @returns {boolean} - Retorna true se salvou com sucesso, false se houve erro.
      */
     setItem(key, value) {
-        // Inicia bloco de tentativa para capturar erros de quota ou permissão
+        // Bloco try-catch para capturar exceções que podem ocorrer ao salvar
         try {
-            // Verifica se a chave é válida (não nula ou vazia)
+            // Validação defensiva: garante que a chave é uma string válida
             if (!key || typeof key !== 'string') {
-                // Loga erro de validação no console para depuração
+                // Log de erro para ajudar o desenvolvedor a identificar chamadas incorretas
                 console.error('StorageAdapter: Chave inválida fornecida.');
-                // Retorna false indicando falha na operação
-                return false;
+                return false; // Interrompe a operação
             }
 
-            // Serializa o valor para string JSON para permitir salvar objetos complexos
+            // Serialização: Converte o valor (objeto JS) para string JSON.
+            // O localStorage só aceita strings, então essa conversão é obrigatória.
             const serializedValue = JSON.stringify(value);
-            
-            // Tenta salvar o item no mecanismo de armazenamento configurado
+
+            // Tenta efetivamente salvar no navegador
             this.storage.setItem(key, serializedValue);
-            
-            // Retorna true indicando sucesso total
+
+            // Se chegou aqui, deu tudo certo
             return true;
         } catch (error) {
-            // Captura erros específicos, como QuotaExceededError
+            // Captura erros como 'QuotaExceededError' (armazenamento cheio)
+            // ou erros de permissão (bloqueio de cookies/storage)
             console.error(`StorageAdapter: Erro ao salvar item "${key}".`, error);
-            // Retorna false para que o chamador saiba que a persistência falhou
+
+            // Retorna false para que a aplicação saiba que o dado não foi persistido
             return false;
         }
     }
 
     /**
      * Recupera um valor do armazenamento.
-     * @param {string} key - A chave identificadora do dado.
-     * @returns {any|null} - Retorna o valor desserializado ou null se não existir/erro.
+     * @param {string} key - A chave do dado que queremos ler.
+     * @returns {any|null} - Retorna o dado original (desserializado) ou null se não encontrar.
      */
     getItem(key) {
-        // Inicia bloco de tentativa para capturar erros de parsing ou acesso
+        // Bloco try-catch para proteger contra erros de leitura ou parsing
         try {
-            // Tenta obter a string bruta do armazenamento
+            // Busca o valor bruto (string) no armazenamento
             const serializedValue = this.storage.getItem(key);
 
-            // Verifica se o valor retornado é nulo (chave não existe)
+            // Se o valor for null, significa que a chave não existe no storage
             if (serializedValue === null) {
-                // Retorna null explicitamente
-                return null;
+                return null; // Retorno explícito de 'nada encontrado'
             }
 
-            // Tenta fazer o parse do JSON de volta para objeto/valor original
+            // Desserialização: Converte a string JSON de volta para objeto JavaScript real.
+            // Isso permite recuperar arrays e objetos prontos para uso.
             return JSON.parse(serializedValue);
         } catch (error) {
-            // Captura erros de parsing JSON (caso o dado esteja corrompido)
+            // Se o JSON estiver corrompido ou inválido, o JSON.parse vai falhar.
+            // Nesse caso, logamos o erro e retornamos null para não quebrar a aplicação.
             console.error(`StorageAdapter: Erro ao recuperar item "${key}".`, error);
-            // Retorna null como fallback seguro
             return null;
         }
     }
 
     /**
      * Remove um item específico do armazenamento.
-     * @param {string} key - A chave do item a ser removido.
-     * @returns {boolean} - True se operação não gerou exceção.
+     * @param {string} key - A chave do item a ser deletado.
+     * @returns {boolean} - True se a operação foi tentada sem erros críticos.
      */
     removeItem(key) {
-        // Inicia bloco de tentativa
         try {
-            // Executa a remoção do item
+            // Chama o método nativo para remover a chave
             this.storage.removeItem(key);
-            // Retorna true indicando que o comando foi executado
-            return true;
+            return true; // Sucesso
         } catch (error) {
-            // Loga erro caso haja problemas de permissão
+            // Captura erros raros de acesso
             console.error(`StorageAdapter: Erro ao remover item "${key}".`, error);
-            // Retorna false indicando falha
             return false;
         }
     }
 
     /**
-     * Verifica se o armazenamento está disponível e funcional.
-     * Útil para detectar modo anônimo ou políticas de segurança restritas.
-     * @returns {boolean} - True se disponível, false caso contrário.
+     * Limpa TODO o armazenamento associado a este domínio.
+     * Use com cuidado.
+     */
+    clear() {
+        try {
+            this.storage.clear();
+            return true;
+        } catch (error) {
+            console.error('StorageAdapter: Erro ao limpar armazenamento.', error);
+            return false;
+        }
+    }
+
+    /**
+     * Verifica se o mecanismo de armazenamento está disponível e funcionando.
+     * Útil para detectar modo anônimo ou bloqueios de navegador.
+     * @returns {boolean}
      */
     isAvailable() {
-        // Inicia bloco de tentativa
         try {
-            // Define uma chave de teste temporária
             const testKey = '__storage_test__';
-            // Tenta salvar a chave de teste
             this.storage.setItem(testKey, testKey);
-            // Tenta remover a chave de teste logo em seguida
             this.storage.removeItem(testKey);
-            // Se chegou aqui sem erro, o storage está funcional
             return true;
         } catch (e) {
-            // Se houve erro (ex: quota excedida, acesso negado), retorna false
             return false;
         }
     }
