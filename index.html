@@ -283,13 +283,8 @@
                 <div class="bg-background rounded-2xl p-8 md:p-10 shadow-lg border border-border">
                     <!-- novalidate: Desabilita validação padrão do HTML5 para usarmos estilização customizada se quisermos -->
                     <form id="contact-form" novalidate class="space-y-6">
-                        <!-- Campos Ocultos para Configuração do FormSubmit -->
-                        <!-- _honey: Campo Honeypot para evitar spam (invisível para usuários, preenchido por bots) -->
-                        <input type="text" name="_honey" style="display:none">
-                        <!-- _template: Define o estilo do email recebido (table ou box) -->
-                        <input type="hidden" name="_template" value="table">
-                        <!-- _captcha: Habilita/Desabilita o captcha (false para envio direto via AJAX) -->
-                        <input type="hidden" name="_captcha" value="false">
+                        <!-- Campo Honeypot para evitar spam (invisível para usuários, preenchido por bots) -->
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
                         <!-- Grid para Nome e Email -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

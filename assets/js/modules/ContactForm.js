@@ -81,29 +81,24 @@ async function handleFormSubmit(e) {
     // 2. Preparação para Envio
     setLoadingState(submitBtn, true);
 
-    // Coleta os dados do formulário
+    // Coleta os dados do formulário e converte para Objeto JSON
     const formData = new FormData(form);
-
-    // Configurações adicionais para o FormSubmit
-    // _captcha: false para não pedir captcha (opcional, pode ser true)
-    // _template: table (padrão) ou box
-    // Removemos append manual de _captcha aqui pois já está no HTML
-    formData.append('_subject', `Novo contato do Portfólio: ${formData.get('name')}`);
+    const data = Object.fromEntries(formData.entries());
 
     try {
-        // 3. Envio Assíncrono via Fetch
-        // Usamos o endpoint AJAX do FormSubmit para não redirecionar a página
-        const response = await fetch("https://formsubmit.co/ajax/fourcolors.dev@outlook.com.br", {
+        // 3. Envio Assíncrono via Fetch para nosso Backend Próprio (Serverless)
+        const response = await fetch("/api/send-email", {
             method: "POST",
             headers: {
+                'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: formData
+            body: JSON.stringify(data)
         });
 
         const result = await response.json();
 
-        if (response.ok) {
+        if (response.ok && result.success) {
             // Sucesso
             showFeedback('success', 'Mensagem enviada com sucesso! Em breve entrarei em contato.');
             form.reset(); // Limpa os campos
@@ -112,12 +107,12 @@ async function handleFormSubmit(e) {
             resetFieldStyles(form);
         } else {
             // Erro retornado pela API
-            throw new Error(result.message || 'Erro ao enviar mensagem.');
+            throw new Error(result.error || 'Erro ao enviar mensagem.');
         }
 
     } catch (error) {
         console.error('Erro no envio:', error);
-        showFeedback('error', 'Ocorreu um erro ao enviar. Por favor, tente novamente ou contate via WhatsApp.');
+        showFeedback('error', 'Ocorreu um erro ao enviar. Verifique sua conexão ou tente mais tarde.');
     } finally {
         // 4. Restaura estado do botão
         setLoadingState(submitBtn, false, originalBtnText);

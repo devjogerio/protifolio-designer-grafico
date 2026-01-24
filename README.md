@@ -43,10 +43,12 @@ A arquitetura é baseada em componentes modulares e renderização dinâmica de 
   - Injeção dinâmica de conteúdo (título, descrição, desafios, solução, resultados).
   - Tratamento de erro 404 para IDs inválidos.
 - **Filtragem de Projetos**: Sistema de filtros por categoria (Branding, Editorial, UX/UI, Social Media).
-- **Formulário de Contato**:
-  - Máscara de entrada automática para WhatsApp.
-  - Validação visual de campos.
-  - Feedback de sucesso/erro simulado (UI/UX).
+- **Formulário de Contato (Backend Serverless)**:
+  - **Envio Real via Outlook**: Backend personalizado em Node.js (`api/send-email.js`) utilizando `Nodemailer`.
+  - **Proteção Anti-Spam**: Implementação de campo "Honeypot" para filtrar bots.
+  - **Segurança**: Variáveis de ambiente (`.env`) para credenciais, evitando exposição no frontend.
+  - **Máscara de WhatsApp**: Formatação automática (XX) XXXXX-XXXX.
+  - **Feedback Visual**: Animações de sucesso/erro e validação em tempo real.
 
 ### Melhorias Recentes
 
@@ -61,6 +63,22 @@ Siga os passos abaixo para rodar o projeto localmente:
 
 - [Node.js](https://nodejs.org/) (versão 18 ou superior recomendada)
 - Gerenciador de pacotes `npm` (incluso no Node.js)
+- Conta no [Vercel](https://vercel.com/) (para deploy do backend) ou ambiente que suporte Serverless Functions.
+
+### Configuração do Backend de Email (Obrigatório para o Formulário)
+
+O formulário de contato utiliza uma função serverless (`api/send-email.js`) que requer variáveis de ambiente configuradas.
+
+1.  Renomeie o arquivo `.env.example` para `.env` na raiz do projeto:
+    ```bash
+    cp .env.example .env
+    ```
+2.  Edite o arquivo `.env` e adicione suas credenciais do Outlook:
+    ```ini
+    EMAIL_USER=seu-email@outlook.com.br
+    EMAIL_PASS=sua-senha-de-app # Use Senha de Aplicativo se tiver 2FA ativado
+    ```
+    _Nota: Nunca comite o arquivo `.env` no Git!_
 
 ### Passo a Passo
 
